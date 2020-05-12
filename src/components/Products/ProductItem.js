@@ -1,16 +1,19 @@
 import PropTypes from 'prop-types';
-import React from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useContext } from 'react';
+// import { useDispatch } from 'react-redux';
 
 import Card from '../UI/Card';
+import { ProductsContext } from '../../context/products-context';
 import './ProductItem.css';
-import { toggleFav } from '../../store/actions/products';
+// import { toggleFav } from '../../store/actions/products';
 
 const ProductItem = ({ id, isFav, title, description }) => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
+  const { toggleFav } = useContext(ProductsContext);
 
   const toggleFavHandler = () => {
-    dispatch(toggleFav(id));
+    // dispatch(toggleFav(id));
+    toggleFav(id);
   };
 
   return (
