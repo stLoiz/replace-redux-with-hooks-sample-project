@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 
 export const ProductsContext = React.createContext({
   products: [],
+  // it is needed for auto completion from IDE later
+  // eslint-disable-next-line no-unused-vars
   toggleFavorite: (id) => {},
 });
 
