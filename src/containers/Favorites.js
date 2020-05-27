@@ -1,12 +1,13 @@
-import React, { useContext } from 'react';
+import React from 'react';
 // import { useSelector } from 'react-redux';
-
-import { ProductsContext } from '../context/products-context';
+// import { ProductsContext } from '../context/products-context';
+import { useStore } from '../hooks-store/store';
 import FavoriteItem from '../components/Favorites/FavoriteItem';
 import './Products.css';
 
 const Favorites = () => {
-  const { products } = useContext(ProductsContext);
+  // const { products } = useContext(ProductsContext);
+  const { products } = useStore()[0];
   const favoriteProducts = products.filter((p) => p.isFavorite);
 
   let content = <p className="placeholder">Got no favorites yet!</p>;
