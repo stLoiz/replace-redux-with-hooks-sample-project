@@ -1,16 +1,21 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { useDispatch } from 'react-redux';
+// import { useDispatch } from 'react-redux';
 
 import Card from '../UI/Card';
+// import { ProductsContext } from '../../context/products-context';
+import { useStore } from '../../hooks-store/store';
 import './ProductItem.css';
-import { toggleFav } from '../../store/actions/products';
+// import { toggleFav } from '../../store/actions/products';
 
-const ProductItem = ({ id, isFav, title, description }) => {
-  const dispatch = useDispatch();
-
+const ProductItem = React.memo(({ id, isFav, title, description }) => {
+  // const dispatch = useDispatch();
+  // const { toggleFav } = useContext(ProductsContext);
+  const dispatch = useStore(false)[1];
   const toggleFavHandler = () => {
-    dispatch(toggleFav(id));
+    // dispatch(toggleFav(id));
+    // toggleFav(id);
+    dispatch('TOGGLE_FAV', id);
   };
 
   return (
@@ -28,7 +33,7 @@ const ProductItem = ({ id, isFav, title, description }) => {
       </div>
     </Card>
   );
-};
+});
 ProductItem.propTypes = {
   id: PropTypes.string.isRequired,
   isFav: PropTypes.bool.isRequired,
